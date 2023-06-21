@@ -15,13 +15,10 @@ export default function LoginPage() {
     await axios
       .post(`${apiUrl}/login`, data)
       .then((res) => {
-        console.log("로그인 성공");
-        console.log(res);
+        alert("로그인을 성공하였습니다.");
       })
-
       .catch((error) => {
-        console.log("로그인 실패");
-        console.log(error);
+        alert("로그인을 실패하였습니다.");
       });
   };
 
