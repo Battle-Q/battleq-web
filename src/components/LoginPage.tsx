@@ -5,6 +5,8 @@ import axios from "axios";
 
 export default function LoginPage() {
   const [loginData, setLoginData] = useState<loginType>({ email: "", pwd: "" });
+  const [emailCheck, setEmailCheck] = useState<boolean>(false);
+  const [passwordCheck, setPasswordCheck] = useState<boolean>(false);
 
   const data: loginType = {
     email: loginData.email,
@@ -22,6 +24,19 @@ export default function LoginPage() {
       });
   };
 
+  const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const regex =
+      /^[0-9a-zA-Z]([0-9a-zA-Z])+?@[0-9a-zA-Z]([0-9a-zA-Z])+?\.[a-zA-Z]{2,3}$/;
+    setLoginData({ ...loginData, email: e.target.value });
+    setEmailCheck(!regex.test(e.target.value));
+  };
+
+  const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const regex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/;
+    setLoginData({ ...loginData, pwd: e.target.value });
+    setPasswordCheck(!regex.test(e.target.value));
+  };
+
   return (
     <div className="w-full h-screen bg-gray-200 flex justify-center ">
       <div className="w-1/3 h-full flex-col">
@@ -33,24 +48,33 @@ export default function LoginPage() {
         <div className="w-full h-4/6 flex flex-col items-center">
           <input
             type="email"
-            className="w-full h-10percent border-black-200 rounded-xl text-3xl bg-white pl-4 mb-10"
+            className="w-full h-10percent border-black-200 rounded-xl text-3xl bg-white pl-4 mb-5"
             placeholder="아이디 예) Battle-Q@naver.com"
             autoComplete="off"
             value={loginData.email}
-            onChange={(e) =>
-              setLoginData({ ...loginData, email: e.target.value })
-            }
+            onChange={handleChangeEmail}
           />
+          {emailCheck && (
+            <div className="w-full h-5percent flex justify-center mb-5 ">
+              <p className="text-lg text-red-400">이메일 형식으로 입력하세요</p>
+            </div>
+          )}
           <input
             type="password"
-            className="w-full h-10percent border-gray-200 rounded-xl bg-white mb-4 text-3xl pl-4"
+            className="w-full h-10percent border-gray-200 rounded-xl bg-white mb-5 text-3xl pl-4"
             placeholder="비밀번호"
             autoComplete="off"
             value={loginData.pwd}
-            onChange={(e) =>
-              setLoginData({ ...loginData, pwd: e.target.value })
-            }
+            onChange={handleChangePassword}
           />
+          {passwordCheck && (
+            <div className="w-5/6 h-5percent flex justify-center mb-7">
+              <p className="text-lg text-red-400 pt-2">
+                {" "}
+                8 ~ 10자 영문, 숫자 조합으로 입력하세요
+              </p>
+            </div>
+          )}
           <div className="w-4/5 h-8 flex justify-end">
             <a href="/regist" className="w-28 h-6 border-b-2 border-blue-500">
               <small className="text-blue-500">계정이 없으신가요?</small>
