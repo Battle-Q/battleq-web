@@ -7,6 +7,8 @@ import SwiperCore, {
 } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
+import ProfileImg from "../components/profile/profileImg";
+
 SwiperCore.use([EffectCoverflow, Autoplay, Pagination, Navigation]);
 
 export function MiddleProfile() {
@@ -21,7 +23,9 @@ export function MiddleProfile() {
             퀴즈 보기
           </button>
         </div>
-        <div className="w-full h-70percent flex justify-center items-center border-b-2 border-white"></div>
+        <div className="w-full h-70percent flex justify-center items-center border-b-2 border-white">
+          <ProfileImg />
+        </div>
 
         <div className="w-full h-15percent flex justify-center items-center">
           <div className="w-40 h-50percent bg-white flex justify-center items-center">
