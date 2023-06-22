@@ -8,6 +8,7 @@ import SwiperCore, {
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import ProfileImg from "../components/profile/profileImg";
+import ProfileName from "../components/profile/ProfileName";
 
 SwiperCore.use([EffectCoverflow, Autoplay, Pagination, Navigation]);
 
@@ -25,6 +26,7 @@ export function MiddleProfile() {
         </div>
         <div className="w-full h-70percent flex justify-center items-center border-b-2 border-white">
           <ProfileImg />
+          <ProfileName />
         </div>
 
         <div className="w-full h-15percent flex justify-center items-center">
