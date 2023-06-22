@@ -5,7 +5,7 @@ import Router from "./service/Router";
 
 function App() {
   return (
-    <div>
+    <div className="w-screen h-screen">
       <Router />
     </div>
   );
