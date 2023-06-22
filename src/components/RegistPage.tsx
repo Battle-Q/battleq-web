@@ -8,8 +8,6 @@ export default function RegistPage() {
     pwd: "",
     nickname: "",
     userName: "",
-    authority: "ROLE_ADMIN",
-    userInfo: "테스트 유저입니다.",
   });
 
   const [emailCheck, setEmailCheck] = useState<boolean>(false);
@@ -20,8 +18,6 @@ export default function RegistPage() {
     pwd: registData.pwd,
     nickname: registData.nickname,
     userName: registData.userName,
-    authority: registData.authority,
-    userInfo: registData.userInfo,
   };
 
   const registHandleSubmit = async (e: { preventDefault: () => void }) => {

@@ -8,6 +8,4 @@ export interface registType {
   pwd: string;
   nickname: string;
   userName: string;
-  authority: string;
-  userInfo: string;
 }
