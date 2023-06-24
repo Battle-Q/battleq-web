@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function profileImg() {
+export default function ProfileImg() {
   return (
     <>
       <img

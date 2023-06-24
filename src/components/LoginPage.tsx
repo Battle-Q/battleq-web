@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { loginType } from "../type/type";
 import { apiUrl } from "../service/authService";
 import axios from "axios";
@@ -7,14 +7,35 @@ export default function LoginPage() {
   const [loginData, setLoginData] = useState<loginType>({ email: "", pwd: "" });
   const [emailCheck, setEmailCheck] = useState<boolean>(false);
   const [passwordCheck, setPasswordCheck] = useState<boolean>(false);
-
+  const [disabled, setDisabled] = useState<boolean>(true);
   const data: loginType = {
     email: loginData.email,
     pwd: loginData.pwd,
   };
+
+  useEffect(() => {
+    disabledButton();
+  }, [emailCheck, passwordCheck]);
+
+  const disabledButton = () => {
+    if (!emailCheck && !passwordCheck) {
+      return setDisabled(false);
+    }
+
+    return setDisabled(true);
+  };
+
+  const isLoginEmpty = () => {
+    return loginData.email.length === 0 || loginData.pwd.length === 0;
+  };
+
   const loginHandleSubmit = async (e: { preventDefault: () => void }) => {
     e.preventDefault();
-    await axios
+    if (isLoginEmpty()) {
+      return alert("입력한 정보를 확인해주세요.");
+    }
+
+    return await axios
       .post(`${apiUrl}/login`, data)
       .then((res) => {
         alert("로그인을 성공하였습니다.");
@@ -26,7 +47,7 @@ export default function LoginPage() {
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const regex =
-      /^[0-9a-zA-Z]([0-9a-zA-Z])+?@[0-9a-zA-Z]([0-9a-zA-Z])+?\.[a-zA-Z]{2,3}$/;
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+?@[0-9a-zA-Z]([0-9a-zA-Z])+?\.[a-zA-Z]{2,3}$/;
     setLoginData({ ...loginData, email: e.target.value });
     setEmailCheck(!regex.test(e.target.value));
   };
@@ -84,6 +105,7 @@ export default function LoginPage() {
             <button
               className="w-3/4 h-1/2 text-4xl font-semibold rounded-lg bg-violet-400 text-white"
               onClick={loginHandleSubmit}
+              disabled={disabled}
             >
               로그인
             </button>

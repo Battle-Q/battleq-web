@@ -7,8 +7,9 @@ import SwiperCore, {
 } from "swiper";
 import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
-import ProfileImg from "../components/profile/profileImg";
+
 import ProfileName from "../components/profile/ProfileName";
+import ProfileImg from "../components/profile/ProfileImg";
 
 SwiperCore.use([EffectCoverflow, Autoplay, Pagination, Navigation]);
 

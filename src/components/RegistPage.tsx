@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { registType } from "../type/type";
 import { apiUrl } from "../service/authService";
 import axios from "axios";
@@ -12,6 +12,7 @@ export default function RegistPage() {
 
   const [emailCheck, setEmailCheck] = useState<boolean>(false);
   const [passwordCheck, setPasswordCheck] = useState<boolean>(false);
+  const [disabled, setDisabled] = useState<boolean>(true);
 
   const data: registType = {
     email: registData.email,
@@ -20,35 +21,48 @@ export default function RegistPage() {
     userName: registData.userName,
   };
 
-  const registHandleSubmit = async (e: { preventDefault: () => void }) => {
-    e.preventDefault();
-    if (
-      registData.email.length > 0 &&
-      registData.pwd.length > 0 &&
-      registData.nickname.length > 0 &&
-      registData.userName.length > 0
-    )
-      return await axios
-        .post(`${apiUrl}`, data)
-        .then((res) => {
-          alert("회원가입을 성공하였습니다.");
-        })
+  useEffect(() => {
+    disabledButton();
+  }, [emailCheck, passwordCheck]);
 
-        .catch((error) => {
-          alert("회원가입을 실패하였습니다.");
-        });
-    if (
+  const disabledButton = () => {
+    if (!emailCheck && !passwordCheck) {
+      return setDisabled(false);
+    }
+
+    return setDisabled(true);
+  };
+
+  const isRegistrationEmpty = () => {
+    return (
       registData.email.length === 0 ||
       registData.pwd.length === 0 ||
       registData.nickname.length === 0 ||
       registData.userName.length === 0
-    )
+    );
+  };
+
+  const registHandleSubmit = async (e: { preventDefault: () => void }) => {
+    e.preventDefault();
+
+    if (isRegistrationEmpty()) {
       return alert("입력한 정보를 확인해주세요.");
+    }
+
+    return await axios
+      .post(`${apiUrl}`, data)
+      .then((res) => {
+        alert("회원가입을 성공하였습니다.");
+      })
+
+      .catch((error) => {
+        alert("회원가입을 실패하였습니다.");
+      });
   };
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const regex =
-      /^[0-9a-zA-Z]([0-9a-zA-Z])+?@[0-9a-zA-Z]([0-9a-zA-Z])+?\.[a-zA-Z]{2,3}$/;
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+?@[0-9a-zA-Z]([0-9a-zA-Z])+?\.[a-zA-Z]{2,3}$/;
     setRegistData({ ...registData, email: e.target.value });
     setEmailCheck(!regex.test(e.target.value));
   };
@@ -146,6 +160,7 @@ export default function RegistPage() {
             <button
               className="w-3/4 h-1/2 text-4xl font-semibold rounded-lg bg-violet-400 text-white"
               onClick={registHandleSubmit}
+              disabled={disabled}
             >
               회원가입
             </button>
