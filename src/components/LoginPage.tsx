@@ -47,13 +47,13 @@ export default function LoginPage() {
 
   const handleChangeEmail = (e: React.ChangeEvent<HTMLInputElement>) => {
     const regex =
-      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])+?@[0-9a-zA-Z]([0-9a-zA-Z])+?\.[a-zA-Z]{2,3}$/;
+      /^[a-zA-Z0-9.!#$%&'*+=?^_`{|}~-]+([-_.]?[0-9a-zA-Z.!#$%&])+?@[0-9a-zA-Z]([0-9a-zA-Z])+?\.[a-zA-Z]{2,3}$/;
     setLoginData({ ...loginData, email: e.target.value });
     setEmailCheck(!regex.test(e.target.value));
   };
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const regex = /^(?=.*\d)(?=.*[a-zA-Z])[0-9a-zA-Z]{8,10}$/;
+    const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
     setLoginData({ ...loginData, pwd: e.target.value });
     setPasswordCheck(!regex.test(e.target.value));
   };
@@ -92,7 +92,7 @@ export default function LoginPage() {
             <div className="w-5/6 h-5percent flex justify-center mb-7">
               <p className="text-lg text-red-400 pt-2">
                 {" "}
-                8 ~ 10자 영문, 숫자 조합으로 입력하세요
+                영문, 숫자, 특수문자 조합으로 8~12자 입력하세요
               </p>
             </div>
           )}
