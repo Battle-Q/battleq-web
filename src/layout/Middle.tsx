@@ -51,3 +51,49 @@ export function MiddleProfile() {
     </div>
   );
 }
+
+export function MiddleBoardLeft() {
+  return (
+    <div className="w-15percent h-95percent bg-white mr-20 rounded-2xl bg-opacity-40 flex justify-center items-center flex-col">
+      <div className="w-full h-15percent flex justify-around items-center border-b-2 border-white">
+        <p className="text-3xl text-white">Menu</p>
+      </div>
+
+      <div className="w-full h-70percent flex flex-col justify-center items-center border-b-2 border-white"></div>
+      <div className="w-full h-15percent flex justify-center items-center"></div>
+    </div>
+  );
+}
+
+export function MiddleBoardFree() {
+  return (
+    <div className="w-full h-80percent flex justify-center items-center bg-watingRoom">
+      <MiddleBoardLeft />
+      <div className="w-75percent h-95percent bg-white rounded-2xl bg-opacity-40 flex flex-col ">
+        <div className="w-full h-15percent text-3xl items-center flex justify-center font-bold border-b-2">
+          <p className="text-3xl text-white">자유게시판</p>
+        </div>
+        <div className="w-full h-70percent flex items-center justify-center rounded-2xl border-b-2"></div>
+        <div className="w-full h-15percent flex justify-center">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  );
+}
+export function MiddleBoardNotice() {
+  return (
+    <div className="w-full h-80percent flex justify-center items-center bg-watingRoom">
+      <MiddleBoardLeft />
+      <div className="w-75percent h-95percent bg-white rounded-2xl bg-opacity-40 flex flex-col ">
+        <div className="w-full h-15percent text-3xl items-center flex justify-center font-bold border-b-2">
+          <p className="text-3xl text-white">공지사항</p>
+        </div>
+        <div className="w-full h-70percent flex items-center justify-center rounded-2xl border-b-2"></div>
+        <div className="w-full h-15percent flex justify-center">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  );
+}
