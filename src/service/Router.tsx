@@ -6,10 +6,12 @@ import ProfilePage from "../components/ProfilePage";
 import Free from "../components/board/Free";
 import Notice from "../components/board/Notice";
 import QuizListPage from "../components/QuizListPage";
+import MainPage from "../components/MainPage";
 
 export default function Router() {
   return (
     <Routes>
+      <Route path="/" element={<MainPage />} />
       <Route path="/login" element={<LoginPage />} />
       <Route path="/regist" element={<RegistPage />} />
       <Route path="/profile" element={<ProfilePage />} />

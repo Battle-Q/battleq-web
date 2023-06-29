@@ -35,10 +35,14 @@ export default function LoginPage() {
       return alert("입력한 정보를 확인해주세요.");
     }
 
-    return await axios
+    await axios
       .post(`${apiUrl}/login`, data)
       .then((res) => {
         alert("로그인을 성공하였습니다.");
+        localStorage.setItem("accessToken", res.data.data);
+        localStorage.setItem("email", data.email);
+        localStorage.setItem("pwd", data.pwd);
+        window.location.replace("/");
       })
       .catch((error) => {
         alert("로그인을 실패하였습니다.");
