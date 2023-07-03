@@ -41,7 +41,6 @@ export default function LoginPage() {
         alert("로그인을 성공하였습니다.");
         localStorage.setItem("accessToken", res.data.data);
         localStorage.setItem("email", data.email);
-        localStorage.setItem("pwd", data.pwd);
         window.location.replace("/");
       })
       .catch((error) => {
@@ -57,7 +56,8 @@ export default function LoginPage() {
   };
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
+    // const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
+    const regex = /^(?=.*[0-9])(?=.*[a-zA-z]).{3,8}$/;
     setLoginData({ ...loginData, pwd: e.target.value });
     setPasswordCheck(!regex.test(e.target.value));
   };
