@@ -121,11 +121,8 @@ export function MiddleQuizList() {
 }
 
 export function MiddleQuizSummaryCreate() {
-  const navigate = useNavigate();
-
   return (
     <div className="w-full h-80percent flex justify-center items-center bg-watingRoom">
-      {/* 왼쪽 프로필 정보 */}
       <div className="w-60percent h-95percent bg-white mr-20 rounded-2xl bg-opacity-40 flex justify-center items-center flex-col">
         <div className="w-full h-85percent  flex justify-center items-center border-b-2 border-white flex-col">
           <div className="w-3/4 h-20percent flex justify-around items-end">
@@ -178,7 +175,6 @@ export function MiddleQuizSummaryCreate() {
           </div>
         </div>
       </div>
-      {/* 오른쪽 카테고리 정보 */}
       <div className="w-30percent h-95percent bg-white rounded-2xl bg-opacity-40 flex flex-col ">
         <div className="w-full h-15percent text-3xl items-center flex justify-center font-bold">
           <span>퀴즈 카테고리 이름</span>
@@ -197,6 +193,103 @@ export function MiddleQuizSummaryCreate() {
             카테고리와 관련된 다양한 형식의 문제를 풀어보고 지식을 습득하는
             시간을 가져봅시다 .
           </p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function MiddleQuizContent() {
+  return (
+    <div className="w-full h-80percent flex justify-center items-center bg-watingRoom">
+      <div className="w-20percent h-95percent bg-white mr-10 rounded-2xl bg-opacity-40 flex justify-center items-center flex-col"></div>
+      <div className="w-50percent h-95percent bg-white mr-10 rounded-2xl bg-opacity-40 flex justify-around items-center flex-col">
+        <div className="w-full h-20percent  flex justify-center items-center">
+          <input
+            placeholder="문제 제목을 입력해주세요."
+            autoComplete="off"
+            name="title"
+            className="w-3/4 h-1/2 rounded-2xl text-xl text-center"
+          />
+        </div>
+        <div className="w-full h-60percent grid grid-cols-2 gap-3 place-items-center">
+          <input
+            name="content"
+            placeholder="1번 문항"
+            className="w-3/4 h-2/3 rounded-full text-xl text-center border-2"
+          />
+          <input
+            name="content"
+            placeholder="2번 문항"
+            className="w-3/4 h-2/3 rounded-full text-xl text-center border-2"
+          />
+          <input
+            name="content"
+            placeholder="3번 문항"
+            className="w-3/4 h-2/3 rounded-full text-xl text-center border-2"
+          />
+          <input
+            name="content"
+            placeholder="4번 문항"
+            className="w-3/4 h-2/3 rounded-full text-xl text-center border-2"
+          />
+        </div>
+        <div className="w-full h-20percent flex items-center justify-center">
+          <input
+            name="answer"
+            placeholder="정답을 입력해주세요."
+            className="w-3/4 h-1/2 rounded-2xl text-xl text-center"
+          />
+        </div>
+      </div>
+      <div className="w-20percent h-95percent bg-white rounded-2xl bg-opacity-40 flex flex-col items-center">
+        <div className="w-full h-80percent rounded-2xl flex flex-col items-center justify-around">
+          <select className="w-2/3 h-1/5 text-center text-xl cursor-pointer rounded-full border-2 border-opacity-70 bg-white bg-opacity-0 text-white">
+            <option className="text-black" value="VOTE">
+              4지선다
+            </option>
+            <option className="text-black" value="CHOSUNG">
+              초성
+            </option>
+            <option className="text-black" value="OX">
+              OX
+            </option>
+            <option className="text-black" value="SHORTANSWER">
+              주관식
+            </option>
+          </select>{" "}
+          <select className="w-2/3 h-1/5 text-center text-xl cursor-pointer rounded-full border-2 border-opacity-70 bg-white bg-opacity-0 text-white">
+            <option className="text-black" value="5">
+              5s
+            </option>
+            <option className="text-black" value="10">
+              10s
+            </option>
+            <option className="text-black" value="15">
+              15s
+            </option>
+          </select>{" "}
+          <select className="w-2/3 h-1/5 text-center text-xl cursor-pointer rounded-full border-2 border-opacity-70 bg-white bg-opacity-0 text-white">
+            <option className="text-black" value="SINGLE">
+              SINGLE
+            </option>
+            <option className="text-black" value="DOUBLE">
+              DOUBLE
+            </option>
+          </select>{" "}
+          <input
+            name="image"
+            placeholder="이미지 주소를 넣어주세요"
+            className="w-2/3 h-1/5 text-center text-sm rounded-full border-2 border-opacity-70 bg-white bg-opacity-0 text-white placeholder-white"
+          />
+        </div>
+        <div className="w-full h-20percent rounded-2xl flex items-center justify-around">
+          <button className="w-1/3 h-1/2 text-center text-xl rounded-full border-2 text-white">
+            제작
+          </button>
+          <button className="w-1/3 h-1/2 text-center text-xl rounded-full border-2 text-white">
+            등록
+          </button>
         </div>
       </div>
     </div>
