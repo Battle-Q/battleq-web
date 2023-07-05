@@ -35,10 +35,13 @@ export default function LoginPage() {
       return alert("입력한 정보를 확인해주세요.");
     }
 
-    return await axios
+    await axios
       .post(`${apiUrl}/login`, data)
       .then((res) => {
         alert("로그인을 성공하였습니다.");
+        localStorage.setItem("accessToken", res.data.data);
+        localStorage.setItem("email", data.email);
+        window.location.replace("/");
       })
       .catch((error) => {
         alert("로그인을 실패하였습니다.");
@@ -53,7 +56,8 @@ export default function LoginPage() {
   };
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
+    // const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
+    const regex = /^(?=.*[0-9])(?=.*[a-zA-z]).{3,8}$/;
     setLoginData({ ...loginData, pwd: e.target.value });
     setPasswordCheck(!regex.test(e.target.value));
   };
