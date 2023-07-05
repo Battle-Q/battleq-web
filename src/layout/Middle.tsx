@@ -97,7 +97,10 @@ export function MiddleQuizList() {
               확인
             </button>
           </div>
-          <button className="w-20 h-20 rounded-full absolute left-4 bottom-16 border-2">
+          <button
+            className="w-20 h-20 rounded-full absolute left-4 bottom-16 border-2"
+            onClick={() => navigate("/quizSummaryCreate")}
+          >
             <span className="text-white text-sm bottom-24 font-bold">
               문제 만들기
             </span>
@@ -111,6 +114,89 @@ export function MiddleQuizList() {
         </>
         <div className="w-full h-15percent flex justify-center">
           <p></p>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function MiddleQuizSummaryCreate() {
+  const navigate = useNavigate();
+
+  return (
+    <div className="w-full h-80percent flex justify-center items-center bg-watingRoom">
+      {/* 왼쪽 프로필 정보 */}
+      <div className="w-60percent h-95percent bg-white mr-20 rounded-2xl bg-opacity-40 flex justify-center items-center flex-col">
+        <div className="w-full h-85percent  flex justify-center items-center border-b-2 border-white flex-col">
+          <div className="w-3/4 h-20percent flex justify-around items-end">
+            <span className="w-15percent h-1/2 text-3xl flex text-center justify-center items-center text-white">
+              제목
+            </span>
+            <input
+              required
+              id="name"
+              name="name"
+              autoComplete="off"
+              autoFocus
+              className="w-3/4 h-1/2 text-2xl rounded-lg pl-5"
+            />
+          </div>
+          <div className="w-3/4 h-60percent flex justify-around items-center">
+            <span className="w-15percent h-1/2 text-3xl flex text-center justify-center items-center text-white">
+              설명
+            </span>
+            <input
+              required
+              name="introduction"
+              id="introduction"
+              autoComplete="off"
+              className="w-3/4 h-1/2 text-2xl rounded-lg pl-5"
+            />
+          </div>
+          <div className="w-3/4 h-20percent flex justify-around items-start">
+            <span className="w-15percent h-1/2 text-3xl flex text-center justify-center items-center text-white">
+              카테고리
+            </span>
+            <select
+              name="category"
+              className="w-3/4 h-1/2 text-2xl rounded-lg pl-5 cursor-pointer"
+            >
+              <option value="">선택</option>
+              <option value="IT">IT</option>
+              <option value="GAME">GAME</option>
+              <option value="FUN">FUN</option>
+            </select>
+          </div>
+        </div>
+
+        <div className="w-full h-15percent flex justify-center items-center">
+          <div className="w-40 h-50percent bg-white flex justify-center items-center">
+            <button className="w-full h-full text-2xl font-bold mt-1">
+              <span className="text-3xl text-green-600 mr-5 mb-1">&#9654;</span>
+              확인
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* 오른쪽 카테고리 정보 */}
+      <div className="w-30percent h-95percent bg-white rounded-2xl bg-opacity-40 flex flex-col ">
+        <div className="w-full h-15percent text-3xl items-center flex justify-center font-bold">
+          <span>퀴즈 카테고리 이름</span>
+        </div>
+        <div className="w-full h-60percent flex items-center justify-center">
+          <img
+            src="images/categoryDefault.jpg"
+            className="w-85percent h-85percent rounded-3xl"
+          />
+        </div>
+
+        <div className="w-full h-25percent flex flex-col justify-center">
+          <p>카테고리에 관련된 문제를 제작합니다.</p>
+
+          <p>
+            카테고리와 관련된 다양한 형식의 문제를 풀어보고 지식을 습득하는
+            시간을 가져봅시다 .
+          </p>
         </div>
       </div>
     </div>

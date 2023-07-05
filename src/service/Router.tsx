@@ -7,6 +7,7 @@ import Free from "../components/board/Free";
 import Notice from "../components/board/Notice";
 import QuizListPage from "../components/QuizListPage";
 import MainPage from "../components/MainPage";
+import QuizSummaryCreate from "../components/quiz/QuizSummaryCreate";
 
 export default function Router() {
   return (
@@ -16,6 +17,7 @@ export default function Router() {
       <Route path="/regist" element={<RegistPage />} />
       <Route path="/profile" element={<ProfilePage />} />
       <Route path="/quizList" element={<QuizListPage />} />
+      <Route path="/quizSummaryCreate" element={<QuizSummaryCreate />} />
       <Route path="/board/free" element={<Free />} />
       <Route path="/board/notice" element={<Notice />} />
     </Routes>
