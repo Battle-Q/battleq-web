@@ -10,6 +10,8 @@ import "swiper/swiper.min.css";
 import ProfileName from "../components/profile/ProfileName";
 import ProfileImg from "../components/profile/ProfileImg";
 import { useNavigate } from "react-router-dom";
+import ParticipationList from "../components/game/ParticipationList";
+import { ChatInputBox } from "../components/game/GameChat";
 
 SwiperCore.use([EffectCoverflow, Autoplay, Pagination, Navigation]);
 
@@ -344,10 +346,14 @@ export function MiddleBoardNotice() {
 
 export function MiddleGameLobby() {
   return (
-    <div className="w-full h-80per flex  justify-center items-center bg-watingRoom">
-      <div className="w-30per h-95per bg-white mr-20 rounded-2xl bg-opacity-60 flex flex-col"></div>
-      <div className="w-60per h-95per bg-white rounded-2xl bg-opacity-40 flex flex-col ">
-        <div className="w-full h-90per bg-white overflow-scroll overflow-x-hidden overflow-y-auto bg-opacity-40 rounded-t-2xl"></div>
+    <div className="w-full h-80percent flex justify-center items-center bg-watingRoom">
+      <div className="w-30percent h-95percent bg-white mr-20 rounded-2xl bg-opacity-60 flex flex-col">
+        <ParticipationList />
+      </div>
+
+      <div className="w-60percent h-95percent bg-white rounded-2xl bg-opacity-40 flex flex-col ">
+        <div className="w-full h-90percent bg-white overflow-scroll overflow-x-hidden overflow-y-auto bg-opacity-40 rounded-t-2xl"></div>
+        <ChatInputBox />
       </div>
     </div>
   );
