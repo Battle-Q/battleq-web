@@ -341,3 +341,14 @@ export function MiddleBoardNotice() {
     </div>
   );
 }
+
+export function MiddleGameLobby() {
+  return (
+    <div className="w-full h-80per flex  justify-center items-center bg-watingRoom">
+      <div className="w-30per h-95per bg-white mr-20 rounded-2xl bg-opacity-60 flex flex-col"></div>
+      <div className="w-60per h-95per bg-white rounded-2xl bg-opacity-40 flex flex-col ">
+        <div className="w-full h-90per bg-white overflow-scroll overflow-x-hidden overflow-y-auto bg-opacity-40 rounded-t-2xl"></div>
+      </div>
+    </div>
+  );
+}
