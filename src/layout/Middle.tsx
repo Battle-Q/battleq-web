@@ -358,3 +358,29 @@ export function MiddleGameLobby() {
     </div>
   );
 }
+
+export function MiddleGameInfomation() {
+  return (
+    <div className="w-full h-80percent flex  justify-center items-center bg-watingRoom ">
+      <div className="w-30percent h-95percent bg-white mr-20 rounded-2xl bg-opacity-60 flex flex-col">
+        <ParticipationList />
+      </div>
+
+      <div className="w-60percent h-95percent bg-white rounded-2xl bg-opacity-60 flex flex-col ">
+        <div className="w-full h-15percent flex justify-around items-center ">
+          <button className="w-30percent h-50percent bg-white rounded-l-full rounded-r-full text-xl font-bold">
+            게임 정보
+          </button>
+        </div>
+        <div className="w-full h-60percent flex justify-around items-center border-b-2 border-white ">
+          <img
+            src="images/categoryDefault.jpg"
+            alt="game introduction"
+            className="w-3/5 h-3/4"
+          />
+        </div>
+        <div className="w-full h-30percent flex justify-around items-center"></div>
+      </div>
+    </div>
+  );
+}

@@ -10,6 +10,7 @@ import MainPage from "../components/MainPage";
 import QuizSummaryCreate from "../components/quiz/QuizSummaryCreate";
 import QuizContentCreate from "../components/quiz/QuizContentCreate";
 import GameLobbyPage from "../components/game/GameLobbyPage";
+import GameInfomation from "../components/game/GameInfomation";
 
 export default function Router() {
   return (
@@ -24,6 +25,7 @@ export default function Router() {
       <Route path="/board/free" element={<Free />} />
       <Route path="/board/notice" element={<Notice />} />
       <Route path="/gameLobby" element={<GameLobbyPage />} />
+      <Route path="/gameInfomation" element={<GameInfomation />} />
     </Routes>
   );
 }
