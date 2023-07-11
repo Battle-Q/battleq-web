@@ -56,8 +56,7 @@ export default function LoginPage() {
   };
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
-    // const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
-    const regex = /^(?=.*[0-9])(?=.*[a-zA-z]).{3,8}$/;
+    const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
     setLoginData({ ...loginData, pwd: e.target.value });
     setPasswordCheck(!regex.test(e.target.value));
   };
