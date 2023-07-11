@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
-
+import userDataReducer from "../reducer/userDataSlice";
 export const store = configureStore({
-  reducer: {},
+  reducer: { userData: userDataReducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
   devTools: true,

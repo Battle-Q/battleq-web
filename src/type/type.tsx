@@ -9,3 +9,11 @@ export interface registType {
   nickname: string;
   userName: string;
 }
+
+export interface userData {
+  userdata: string[];
+}
+
+export interface userDataArray {
+  userdata: userData[];
+}

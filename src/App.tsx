@@ -2,14 +2,9 @@ import React, { useEffect } from "react";
 import "./App.css";
 import Router from "./service/Router";
 import axios from "axios";
+import { email, headers } from "./service/authService";
 
 function App() {
-  const email = localStorage.getItem("email");
-  const headers = {
-    accessToken: `${localStorage.getItem("accessToken")}`,
-    "Access-Control-Allow-Origin": "*",
-  };
-
   useEffect(() => {
     (async () => {
       await axios
