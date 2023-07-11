@@ -6,7 +6,6 @@ import { useAppDispatch } from "./redux/hooks/hooks";
 
 function App() {
   const dispatch = useAppDispatch();
-
   useEffect(() => {
     dispatch(fetchData());
   }, []);

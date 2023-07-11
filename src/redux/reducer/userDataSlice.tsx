@@ -1,6 +1,5 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-
 import { userDataArray } from "../../type/type";
 import { email, headers } from "../../service/authService";
 const initialState: userDataArray = {
@@ -9,7 +8,7 @@ const initialState: userDataArray = {
 
 export const fetchData = createAsyncThunk("data/fetchData", async () => {
   const response = await axios.get(`member/detail/${email}`, { headers });
-  const userData = response.data;
+  const userData = response.data.data;
   return userData;
 });
 
