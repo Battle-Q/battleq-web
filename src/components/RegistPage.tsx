@@ -50,7 +50,7 @@ export default function RegistPage() {
     }
 
     return await axios
-      .post(`${apiUrl}`, data)
+      .post(`${apiUrl}/users`, data)
       .then((res) => {
         alert("회원가입을 성공하였습니다.");
       })

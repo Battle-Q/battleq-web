@@ -36,7 +36,7 @@ export default function LoginPage() {
     }
 
     await axios
-      .post(`${apiUrl}/login`, data)
+      .post(`${apiUrl}/auth/login`, data)
       .then((res) => {
         alert("로그인을 성공하였습니다.");
         localStorage.setItem("accessToken", res.data.data);

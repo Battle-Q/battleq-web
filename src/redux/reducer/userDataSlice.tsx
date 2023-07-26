@@ -1,13 +1,14 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { userDataArray } from "../../type/type";
-import { email, headers } from "../../service/authService";
+import { apiUrl, email, headers } from "../../service/authService";
+
 const initialState: userDataArray = {
   userdata: [],
 };
 
 export const fetchData = createAsyncThunk("data/fetchData", async () => {
-  const response = await axios.get(`member/detail/${email}`, { headers });
+  const response = await axios.get(`${apiUrl}/boards`, { headers });
   const userData = response.data.data;
   return userData;
 });
