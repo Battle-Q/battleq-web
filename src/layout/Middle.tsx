@@ -9,9 +9,10 @@ import "swiper/swiper-bundle.min.css";
 import "swiper/swiper.min.css";
 import ProfileName from "../components/profile/ProfileName";
 import ProfileImg from "../components/profile/ProfileImg";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import ParticipationList from "../components/game/ParticipationList";
-import { ChatInputBox } from "../components/game/GameChat";
+import { ChatInputBox, ChatWindow } from "../components/game/GameChat";
+import { TextEditor } from "../components/board/TextEditor";
 
 SwiperCore.use([EffectCoverflow, Autoplay, Pagination, Navigation]);
 
@@ -312,6 +313,8 @@ export function MiddleBoardLeft() {
 }
 
 export function MiddleBoardFree() {
+  const navigate = useNavigate();
+
   return (
     <div className="w-full h-80percent flex justify-center items-center bg-watingRoom">
       <MiddleBoardLeft />
@@ -320,8 +323,13 @@ export function MiddleBoardFree() {
           <p className="text-3xl text-white">자유게시판</p>
         </div>
         <div className="w-full h-70percent flex items-center justify-center rounded-2xl border-b-2"></div>
-        <div className="w-full h-15percent flex justify-center">
-          <p></p>
+        <div className="w-full h-15percent flex justify-end">
+          <button
+            className="w-7percent h-25percent bg-indigo-100 mr-5 text-xl font-medium mt-4"
+            onClick={() => navigate("/board/textEditor")}
+          >
+            글쓰기
+          </button>
         </div>
       </div>
     </div>
@@ -380,6 +388,63 @@ export function MiddleGameInfomation() {
           />
         </div>
         <div className="w-full h-30percent flex justify-around items-center"></div>
+      </div>
+    </div>
+  );
+}
+
+export function MiddleLeft() {
+  return (
+    <div className="w-30percent h-95percent mr-20 rounded-2xl flex flex-col justify-between bg-red-300">
+      <div className="w-full h-25percent rounded-2xl bg-indigo-500">
+        <img
+          src="/images/crown.png"
+          alt="crown"
+          className="w-20percent h-60percent relative right-10 bottom-12"
+        />
+      </div>
+      <div className="w-full h-10percent flex rounded-2xl bg-purple-400">
+        <img
+          src="/images/mybody.png"
+          alt="my body"
+          className="w-10percent h-2/3 relative right-5 bottom-5"
+        />
+        <div className="w-90percent h-full text-2xl font-bold text-center items-center flex justify-around"></div>
+      </div>
+      <div className="w-full h-55percent rounded-2xl bg-gray-400">
+        <div className="w-full h-90percent bg-white overflow-scroll overflow-x-hidden overflow-y-auto bg-opacity-40 rounded-t-2xl rounded-b">
+          <ChatWindow />
+        </div>
+        <ChatInputBox />
+      </div>
+    </div>
+  );
+}
+
+export function MiddleGamePlay() {
+  return (
+    <div className="w-full h-80percent flex  justify-center items-center bg-watingRoom">
+      <MiddleLeft />
+
+      <div className="w-60percent h-95percent bg-white rounded-2xl bg-opacity-60 flex flex-col">
+        <p className="ml-4 text-xl font-bold mt-3"></p>
+        <div className="w-full h-15percent flex justify-center items-center text-center">
+          <p className="w-90percent h-full text-center items-center flex justify-center text-4xl font-mono font-bold bg-white rounded-full"></p>
+        </div>
+        <div className="w-full h-40percent flex justify-center items-center mt-5 mb-1"></div>
+        <div className="w-full h-35percent"></div>
+      </div>
+    </div>
+  );
+}
+
+export function MiddleGamePlayAnswer() {
+  return (
+    <div className="w-full h-80percent flex  justify-center items-center bg-watingRoom">
+      <MiddleLeft />
+
+      <div className="w-60percent h-95percent bg-white rounded-2xl bg-opacity-60 flex flex-col">
+        <div className="w-full h-25percent text-4xl font- flex text-center items-center justify-center rounded-2xl "></div>
       </div>
     </div>
   );

@@ -11,7 +11,7 @@ import QuizSummaryCreate from "../components/quiz/QuizSummaryCreate";
 import QuizContentCreate from "../components/quiz/QuizContentCreate";
 import GameLobbyPage from "../components/game/GameLobbyPage";
 import GameInfomation from "../components/game/GameInfomation";
-
+import { TextEditor } from "../components/board/TextEditor";
 export default function Router() {
   return (
     <Routes>
@@ -24,6 +24,7 @@ export default function Router() {
       <Route path="/quizContentCreate" element={<QuizContentCreate />} />
       <Route path="/board/free" element={<Free />} />
       <Route path="/board/notice" element={<Notice />} />
+      <Route path="/board/textEditor" element={<TextEditor />} />
       <Route path="/gameLobby" element={<GameLobbyPage />} />
       <Route path="/gameInfomation" element={<GameInfomation />} />
     </Routes>

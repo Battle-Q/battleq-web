@@ -1,24 +1,24 @@
 import React, { useEffect, useState } from "react";
-import { registType } from "../type/type";
+import { RegistType } from "../type/type";
 import { apiUrl } from "../service/authService";
 import axios from "axios";
 export default function RegistPage() {
-  const [registData, setRegistData] = useState<registType>({
+  const [registData, setRegistData] = useState<RegistType>({
     email: "",
-    pwd: "",
+    name: "",
+    password: "",
     nickname: "",
-    userName: "",
   });
 
   const [emailCheck, setEmailCheck] = useState<boolean>(false);
   const [passwordCheck, setPasswordCheck] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(true);
 
-  const data: registType = {
+  const data: RegistType = {
     email: registData.email,
-    pwd: registData.pwd,
+    name: registData.name,
+    password: registData.password,
     nickname: registData.nickname,
-    userName: registData.userName,
   };
 
   useEffect(() => {
@@ -36,9 +36,9 @@ export default function RegistPage() {
   const isRegistrationEmpty = () => {
     return (
       registData.email.length === 0 ||
-      registData.pwd.length === 0 ||
-      registData.nickname.length === 0 ||
-      registData.userName.length === 0
+      registData.name.length === 0 ||
+      registData.password.length === 0 ||
+      registData.nickname.length === 0
     );
   };
 
@@ -69,7 +69,7 @@ export default function RegistPage() {
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
-    setRegistData({ ...registData, pwd: e.target.value });
+    setRegistData({ ...registData, password: e.target.value });
     setPasswordCheck(!regex.test(e.target.value));
   };
 
@@ -112,7 +112,7 @@ export default function RegistPage() {
               className="w-full h-full border-black-200 rounded-l-xl text-2xl bg-white pl-4"
               placeholder="&#128274; 비밀번호"
               autoComplete="off"
-              value={registData.pwd}
+              value={registData.password}
               onChange={handleChangePassword}
             />
           </div>
@@ -130,9 +130,9 @@ export default function RegistPage() {
               className="w-full h-full border-black-200 rounded-l-xl text-2xl bg-white pl-4"
               placeholder="&#128587; 이름"
               autoComplete="off"
-              value={registData.userName}
+              value={registData.name}
               onChange={(e) =>
-                setRegistData({ ...registData, userName: e.target.value })
+                setRegistData({ ...registData, name: e.target.value })
               }
             />
           </div>
