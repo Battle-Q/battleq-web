@@ -51,7 +51,10 @@ export const TextEditor = () => {
     e.preventDefault();
     await axios
       .post(`${apiUrl}/boards`, data)
-      .then((res) => {})
+      .then((res) => {
+        alert("등록되었습니다.");
+        navigate("/board/free");
+      })
       .catch((error) => {});
   };
 

@@ -1,4 +1,3 @@
-import React from "react";
 import { HeaderQuizCreate } from "../../layout/Header";
 import { Footer } from "../../layout/Footer";
 import { MiddleQuizContent } from "../../layout/Middle";

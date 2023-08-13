@@ -1,4 +1,3 @@
-import React from "react";
 import { HeaderProfile } from "../layout/Header";
 import { Footer } from "../layout/Footer";
 import { MiddleProfile } from "../layout/Middle";
