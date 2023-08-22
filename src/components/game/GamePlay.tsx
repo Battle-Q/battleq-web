@@ -1,12 +1,13 @@
+import React from "react";
 import { Header } from "../../layout/Header";
+import { MiddleGamePlay } from "../../layout/Middle";
 import { Footer } from "../../layout/Footer";
-import { MiddleBoardNotice } from "../../layout/Middle";
 
-export default function Notice() {
+export default function GamePlay() {
   return (
     <div className="w-full h-full flex flex-col bg-layoutColor">
       <Header />
-      <MiddleBoardNotice />
+      <MiddleGamePlay />
       <Footer />
     </div>
   );

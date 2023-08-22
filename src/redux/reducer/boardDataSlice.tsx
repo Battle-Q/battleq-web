@@ -1,18 +1,20 @@
 import axios from "axios";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { userDataArray } from "../../type/type";
-import { email, headers } from "../../service/authService";
-const initialState: userDataArray = {
+import { UserDataArray } from "../../type/type";
+
+const initialState: UserDataArray = {
   userdata: [],
 };
 
 export const fetchData = createAsyncThunk("data/fetchData", async () => {
-  const response = await axios.get(`member/detail/${email}`, { headers });
+  const response = await axios.get(
+    `http://www.gossing-server.com:8081/api/v1/boards`
+  );
   const userData = response.data.data;
   return userData;
 });
 
-export const userDataSlice = createSlice({
+export const boardDataSlice = createSlice({
   name: "userdata",
   initialState,
   reducers: {},
@@ -23,4 +25,4 @@ export const userDataSlice = createSlice({
   },
 });
 
-export default userDataSlice.reducer;
+export default boardDataSlice.reducer;

@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { loginType } from "../type/type";
+import { LoginType } from "../type/type";
 import { apiUrl } from "../service/authService";
 import axios from "axios";
 
 export default function LoginPage() {
-  const [loginData, setLoginData] = useState<loginType>({ email: "", pwd: "" });
+  const [loginData, setLoginData] = useState<LoginType>({
+    email: "",
+    password: "",
+  });
   const [emailCheck, setEmailCheck] = useState<boolean>(false);
   const [passwordCheck, setPasswordCheck] = useState<boolean>(false);
   const [disabled, setDisabled] = useState<boolean>(true);
-  const data: loginType = {
+
+  const data: LoginType = {
     email: loginData.email,
-    pwd: loginData.pwd,
+    password: loginData.password,
   };
 
   useEffect(() => {
@@ -26,7 +30,7 @@ export default function LoginPage() {
   };
 
   const isLoginEmpty = () => {
-    return loginData.email.length === 0 || loginData.pwd.length === 0;
+    return loginData.email.length === 0 || loginData.password.length === 0;
   };
 
   const loginHandleSubmit = async (e: { preventDefault: () => void }) => {
@@ -36,10 +40,10 @@ export default function LoginPage() {
     }
 
     await axios
-      .post(`${apiUrl}/login`, data)
+      .post(`${apiUrl}/auth/login`, data)
       .then((res) => {
         alert("로그인을 성공하였습니다.");
-        localStorage.setItem("accessToken", res.data.data);
+        localStorage.setItem("accessToken", res.data.data.accessToken);
         localStorage.setItem("email", data.email);
         window.location.replace("/");
       })
@@ -57,7 +61,7 @@ export default function LoginPage() {
 
   const handleChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     const regex = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,12}$/;
-    setLoginData({ ...loginData, pwd: e.target.value });
+    setLoginData({ ...loginData, password: e.target.value });
     setPasswordCheck(!regex.test(e.target.value));
   };
 
@@ -88,7 +92,7 @@ export default function LoginPage() {
             className="w-full h-10percent border-gray-200 rounded-xl bg-white mb-5 text-3xl pl-4"
             placeholder="비밀번호"
             autoComplete="off"
-            value={loginData.pwd}
+            value={loginData.password}
             onChange={handleChangePassword}
           />
           {passwordCheck && (

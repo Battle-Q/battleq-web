@@ -1,19 +1,26 @@
-export interface loginType {
+export interface LoginType {
   email: string;
-  pwd: string;
+  password: string;
 }
 
-export interface registType {
+export interface RegistType {
   email: string;
-  pwd: string;
+  name: string;
+  password: string;
   nickname: string;
-  userName: string;
 }
 
-export interface userData {
+export interface UserData {
   userdata: string[];
 }
 
-export interface userDataArray {
-  userdata: userData[];
+export interface UserDataArray {
+  userdata: UserData[];
+}
+
+export interface BoardData {
+  title: string;
+  content: string;
+  category: string;
+  priority: boolean;
 }

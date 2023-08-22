@@ -8,6 +8,7 @@ module.exports = {
       },
       width: {
         "5percent": "5%",
+        "7percent": "7%",
         "10percent": "10%",
         "15percent": "15%",
         "20percent": "20%",

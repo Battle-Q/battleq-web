@@ -1,10 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
-import userDataReducer from "../reducer/userDataSlice";
+import boardDataReducer from "../reducer/boardDataSlice";
 export const store = configureStore({
-  reducer: { userData: userDataReducer },
+  reducer: { boardData: boardDataReducer },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({ serializableCheck: false }),
-  devTools: true,
+  devTools: process.env.NODE_ENV !== "production",
 });
 
 export type RootState = ReturnType<typeof store.getState>;
